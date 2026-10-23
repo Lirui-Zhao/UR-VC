@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ur-vc"
+version = "0.1.0"
+description = "Unsupervised Robotic Value Correction for time-derived progress proxies"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "UR-VC Authors"}]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyarrow>=14",
+  "torch>=2.6",
+  "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+encoder = [
+  "opencv-python>=4.8",
+  "transformers>=4.53,<5",
+  "pillow>=10",
+]
+visualize = ["opencv-python>=4.8"]
+dev = [
+  "opencv-python>=4.8",
+  "pytest>=8",
+  "transformers>=4.53,<5",
+  "pillow>=10",
+]
+
+[project.scripts]
+urvc = "urvc.cli:main"
+
+[project.urls]
+Homepage = "https://liruizhao.com/projects/UR-VC/"
+Paper = "https://arxiv.org/abs/2607.12892"
+Repository = "https://github.com/Lirui-Zhao/UR-VC"
+Issues = "https://github.com/Lirui-Zhao/UR-VC/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -1,0 +1,13 @@
+# Reference environment: Linux, Python 3.11.15. Used by CPU CI on 3.10/3.11.
+# Install the CPU torch wheel first when CUDA is not needed (see README).
+numpy==1.26.4
+pandas==2.2.3
+pyarrow==20.0.0
+torch==2.7.1
+tqdm==4.67.1
+transformers==4.53.2
+opencv-python==4.11.0.86
+pillow==11.2.1
+pytest==8.3.5
+huggingface-hub==0.32.3
+safetensors==0.5.3

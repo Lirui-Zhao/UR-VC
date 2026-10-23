@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.venv/
+venv/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*~
+
+# Local configuration
+.env
+.env.*
+
+# Generated datasets, model weights, embeddings, and visualizations
+data/
+outputs/
+artifacts/
+cache/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.parquet
+*.mp4
+*.npz
+*.tar.gz
+*.zip

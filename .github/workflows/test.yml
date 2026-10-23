@@ -1,0 +1,34 @@
+name: Tests
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.11"]
+    env:
+      OMP_NUM_THREADS: "2"
+      HF_HUB_OFFLINE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install tested CPU environment
+        run: |
+          python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -c requirements-tested.txt ".[dev]"
+      - name: Test installed package
+        run: |
+          python -m pytest -q
+          urvc --help
+          urvc run --help
+          urvc visualize --help
+      - name: Build wheel
+        run: python -m pip wheel --no-deps --wheel-dir dist .
